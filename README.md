@@ -1,2 +1,5 @@
-# Bulk-Storage-Utilization-Analysis-Python
-This project is currenty in progress
+# Context
+While working in contract logistics, a customer noticed that the inventory reports sent to them from SAP Business Objects would list partially full locations as completely full. This became especially misleading for our bulk storage locations since these locations were very large and the difference between a nearly empty location and a nearly full location was significant. Because our Business Objects server was managed by a 3rd party with long lead times for creating new reports, I implemented the below tool as a temporary solution and proof of concept.
+
+# Summary
+This report takes as inputs the existing reports that were already set up in our Business Objects server. From these reports, the dimensions of bulk locations, the current quantity and product in each location, the predetermined rules on allowable stacking of each product and the dimensions for each product are stored in a merged table. Next, for each location containing at least 1 item, the maximum quantity of that item that can be stored in that location is calculated, compared to the current quantity in that location and then added to the table. This information is then exported into the recipient's folder as CSV file. Lastly, an optional function is available to report volumetric utilization as a whole. This report can be run using input reports from Business Objects from any date. In this way, information about volume utilization can be tracked and compared over time.
